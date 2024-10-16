@@ -216,7 +216,7 @@ const DataTable: React.FC = () => {
             <DateRangePicker
               value={dateRange}
               onChange={handleDateRangeChange}
-              //@ts-expect-error
+              // @ts-expect-error renderInput prop doesn't exist in the current version
               renderInput={(startProps, endProps) => (
                 <>
                   <TextField {...startProps} />
