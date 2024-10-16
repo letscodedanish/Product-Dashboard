@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Advanced Data Table Web App
+
+## Overview
+
+This project is an advanced data table web application developed using React, leveraging the [Tanstack React Table](https://tanstack.com/table/latest/docs/introduction) and [Material React Table](https://www.material-react-table.com/) libraries. The app implements various features such as filtering, sorting, pagination, and more to provide an intuitive and powerful user experience for managing tabular data.
+
+## Features
+
+- **View/Hide Columns**: Users can select which columns to display or hide in the table.
+- **Sorting**: All columns support sorting functionality, allowing users to arrange data based on their preferences.
+- **Filtering**: Comprehensive filtering options include:
+  - **Fuzzy Search**: Search for rows based on the `name` column with tolerance for slight variations or typos.
+  - **Multi-select Dropdowns**: Filter rows using exact matches on the `category` and `subcategory` columns, along with facet generation.
+  - **Range Filters**: Users can filter data based on numeric ranges for the `price` column and date ranges for the `createdAt` column.
+- **Grouping**: Data can be grouped by both `category` and `subcategory` columns simultaneously or independently.
+- **Pagination**: The table displays results with pagination, showing 10 results per page.
+- **Custom Cell Rendering**: Dates are displayed in local datetime format `DD-MMM-YYYY HH:MM` for `createdAt` and `updatedAt` columns.
 
 ## Getting Started
 
