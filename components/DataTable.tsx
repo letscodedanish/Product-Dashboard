@@ -20,6 +20,8 @@ import moment from 'moment';
 import { DateRangePicker } from '@mui/x-date-pickers-pro';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { saveAs } from 'file-saver'; // Import file-saver
+import { FaDownload } from 'react-icons/fa';
 
 interface Product {
   id: number;
@@ -132,10 +134,36 @@ const DataTable: React.FC = () => {
     }));
   };
 
+  const handleExportData = () => {
+    const csv = filteredData.map((item) =>
+      [
+        item.id,
+        item.name,
+        item.category,
+        item.subcategory,
+        item.price,
+        item.sale_price || "N/A",
+        item.createdAt,
+        item.updatedAt,
+      ].join(",")
+    );
+    const csvData = ["ID,Name,Category,Subcategory,Price,Sale Price,Created At,Updated At", ...csv].join("\n");
+
+    // Use file-saver to download the CSV
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+    saveAs(blob, "product-data.csv");
+  };
+
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
-      <div className="p-10">
-        <Button onClick={() => setDrawerOpen(true)}>Open Filters</Button>
+      <div className="p-4">
+        <div className='flex gap-6'>
+        <Button variant="outlined" startIcon={<FaDownload />} color="secondary"
+        onClick={handleExportData}>
+              Export Data
+            </Button>
+        <Button variant='outlined' onClick={() => setDrawerOpen(true)}>Open Sidebar</Button>
+        </div>
 
         <Drawer anchor="right" open={isDrawerOpen} onClose={() => setDrawerOpen(false)} variant="temporary">
           <Box p={2} width={400}>
